@@ -25,11 +25,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 StringBuilder output = new StringBuilder();
                 EditText edit=findViewById(R.id.edit);
-                File folder = new File("/storage/emulated/0/.系统文件，请勿删除/"+edit.getText());
+                //有需要可以修改下面的代码修改路径前缀
+                File folder = new File("/storage/emulated/0/"+edit.getText());
                 File[] listOfFiles = folder.listFiles();
 
-                for (int i = 0; i < listOfFiles.length; i++) {
-                    output.append(listOfFiles[i].getAbsolutePath());
+                for (File listOfFile : listOfFiles) {
+                    output.append(listOfFile.getAbsolutePath());
                 }
                 textView.setText(output);
             }
